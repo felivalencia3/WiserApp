@@ -17,7 +17,7 @@ public class HomeController {
     public SubmissionRepository submissionRepository;
 
     @GetMapping("/")
-    public String home(@RequestParam(name="name", defaultValue = "name", required = false) String name, Map<String, Object> model) {
+    public String home(@RequestParam(name="name", defaultValue = "daniel", required = false) String name, Map<String, Object> model) {
         model.put("name", name);
         return "home";
         //return submissionRepository.findAll();
