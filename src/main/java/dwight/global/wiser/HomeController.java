@@ -23,6 +23,7 @@ public class HomeController {
         //return submissionRepository.findAll();
     }
 
+
     @PostMapping("/admin/add")
     public @ResponseBody
     String addNewSubmission(@RequestParam String artist, @RequestParam String title) {

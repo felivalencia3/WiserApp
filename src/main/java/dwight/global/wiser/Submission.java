@@ -39,5 +39,4 @@ public class Submission {
         this.title = title;
     }
 
-
 }
