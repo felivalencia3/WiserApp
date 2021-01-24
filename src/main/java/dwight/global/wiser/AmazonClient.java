@@ -1,13 +1,12 @@
 package dwight.global.wiser;
 
-import com.amazonaws.auth.AWSCredentials;
-import com.amazonaws.auth.AWSStaticCredentialsProvider;
-import com.amazonaws.auth.BasicAWSCredentials;
-import com.amazonaws.auth.EnvironmentVariableCredentialsProvider;
 import com.amazonaws.regions.Regions;
 import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.AmazonS3ClientBuilder;
-import com.amazonaws.services.s3.model.*;
+import com.amazonaws.services.s3.model.AccessControlList;
+import com.amazonaws.services.s3.model.GroupGrantee;
+import com.amazonaws.services.s3.model.Permission;
+import com.amazonaws.services.s3.model.PutObjectRequest;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -30,6 +29,7 @@ public class AmazonClient {
 
     // Most important method of the class
     // Calls on all other methods
+
     public String uploadFile(MultipartFile multipartFile) {
         String fileUrl = "";
         try {
@@ -69,6 +69,7 @@ public class AmazonClient {
         fos.close();
         return convFile;
     }
+
     // Generates unique filenames so that the same file can be uploaded more than once
     // Adds a timestamp and replaces spaces with underscores
     private String generateFileName(MultipartFile multiPart) {

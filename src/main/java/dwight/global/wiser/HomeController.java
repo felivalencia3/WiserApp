@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.ArrayList;
 import java.util.Map;
 
 @Controller
@@ -18,9 +19,15 @@ public class HomeController {
 
     @GetMapping("/")
     public String home(@RequestParam(name="name", defaultValue = "daniel", required = false) String name, Map<String, Object> model) {
-        model.put("name", name);
+        ArrayList<Submission> submissions = (ArrayList) submissionRepository.findAll();
+        model.put("submissions",submissionRepository.findAll());
+        for (int i = 0; i < submissions.size(); i++) {
+            Submission s = submissions.get(i);
+            model.put("artist", s.getArtist());
+            model.put("title", s.getTitle());
+            model.put("url", s.getUrl());
+        }
         return "home";
-        //return submissionRepository.findAll();
     }
 
 
