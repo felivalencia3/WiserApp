@@ -30,8 +30,8 @@ public class HomeController {
     }
 
     @GetMapping("/api/all")
-    public ArrayList<Submission> testDB(){
-        return (ArrayList) submissionRepository.findAll();
+    public Iterable<Submission> testDB(){
+        return submissionRepository.findAll();
     }
 
     @PostMapping("/admin/add")
