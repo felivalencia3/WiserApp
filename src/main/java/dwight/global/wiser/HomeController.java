@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
-
 import java.util.ArrayList;
 import java.util.Map;
 
@@ -31,8 +30,8 @@ public class HomeController {
     }
 
     @GetMapping("/api/all")
-    public String testDB(){
-        return submissionRepository.findAll();
+    public ArrayList<Submission> testDB(){
+        return (ArrayList) submissionRepository.findAll();
     }
 
     @PostMapping("/admin/add")
