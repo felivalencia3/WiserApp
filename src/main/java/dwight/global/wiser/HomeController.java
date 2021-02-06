@@ -30,6 +30,10 @@ public class HomeController {
         return "home";
     }
 
+    @GetMapping("/api/all")
+    public String testDB(){
+        return submissionRepository.findAll();
+    }
 
     @PostMapping("/admin/add")
     public @ResponseBody
