@@ -6,7 +6,9 @@
 </head>
 <body>
     {{#submissions}}
-    Print out Title, Artist and make the title a link that sends you to url.
+        <p>{{title}}</p>
+        <p>{{artist}}</p>
+        <a href="{{url}}" target="_blank">View Image</a>
     {{/submissions}}
 </body>
 </html>

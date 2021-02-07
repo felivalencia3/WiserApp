@@ -20,7 +20,7 @@ public class HomeController {
     @GetMapping("/")
     public String home(@RequestParam(name="name", defaultValue = "daniel", required = false) String name, Map<String, Object> model) {
         ArrayList<Submission> submissions = (ArrayList) submissionRepository.findAll();
-        model.put("submissions",submissionRepository.findAll());
+        model.put("submissions", submissionRepository.findAll());
         for (int i = 0; i < submissions.size(); i++) {
             Submission s = submissions.get(i);
             model.put("artist", s.getArtist());
@@ -28,16 +28,5 @@ public class HomeController {
             model.put("url", s.getUrl());
         }
         return "home";
-    }
-
-
-    @PostMapping("/admin/add")
-    public @ResponseBody
-    String addNewSubmission(@RequestParam String artist, @RequestParam String title) {
-        Submission n = new Submission();
-        n.setArtist(artist);
-        n.setTitle(title);
-        submissionRepository.save(n);
-        return "Saved";
     }
 }
