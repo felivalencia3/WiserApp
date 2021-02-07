@@ -23,4 +23,10 @@ public class AdminController {
         submissionRepository.save(n);
         return "Saved";
     }
+
+    @GetMapping("/api/delete_all")
+    public void deleteAll(){
+        submissionRepository.deleteAll();
+        System.out.print(submissionRepository.findAll());
+    }
 }
