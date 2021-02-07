@@ -24,9 +24,16 @@ public class AdminController {
         return "Saved";
     }
 
-    @GetMapping("/api/delete_all")
-    public void deleteAll(){
-        submissionRepository.deleteAll();
-        System.out.print(submissionRepository.findAll());
+    @PostMapping("/api/delete/{{id}}")
+    public String deleteSubmission(@PathVariable int id){
+        submissionRepository.deleteById(id);
+        return "Deleted submission: " + id;
     }
+
+    @PostMapping("/api/update")
+    public Submission updateSubmission(@PathVariable int id, @RequestParam String newUrl){
+        submissionRepository.findById(id).setUrl(newUrl);
+        return submissionRepository.findById(id);
+    }
+
 }
