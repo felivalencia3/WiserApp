@@ -15,10 +15,11 @@ public class AdminController {
     }
 
     @PostMapping("/api/add")
-    public String addNewSubmission(@RequestParam String artist, @RequestParam String title) {
+    public String addNewSubmission(@RequestParam String artist, @RequestParam String title, @RequestParam String url) {
         Submission n = new Submission();
         n.setArtist(artist);
         n.setTitle(title);
+        n.setUrl(url);
         submissionRepository.save(n);
         return "Saved";
     }
