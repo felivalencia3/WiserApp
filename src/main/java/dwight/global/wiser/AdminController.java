@@ -12,7 +12,7 @@ public class AdminController {
     SubmissionRepository submissionRepository;
 
     @GetMapping("/api/all")
-    public Submission getAll() {
+    public Iterable<Submission> getAll() {
         return submissionRepository.findAll();
     }
 
