@@ -2,12 +2,7 @@ package dwight.global.wiser;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.ModelAndView;
 
 import java.util.ArrayList;
 import java.util.Map;
@@ -21,12 +16,6 @@ public class HomeController {
     public String home(Map<String, Object> model) {
         ArrayList<Submission> submissions = (ArrayList) submissionRepository.findAll();
         model.put("submissions", submissionRepository.findAll());
-        for (int i = 0; i < submissions.size(); i++) {
-            Submission s = submissions.get(i);
-            model.put("artist", s.getArtist());
-            model.put("title", s.getTitle());
-            model.put("url", s.getUrl());
-        }
         return "home";
     }
 }
