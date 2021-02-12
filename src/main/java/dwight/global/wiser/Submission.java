@@ -12,8 +12,13 @@ public class Submission {
 
     private String title;
 
+    @Basic(optional=true)
+    private String subheading;
+
+    @Basic(optional=true)
     private String url;
 
+    @Basic(optional=true)
     private String content;
 
     public Integer getId() {
@@ -54,6 +59,14 @@ public class Submission {
 
     public void setContent(String content) {
         this.content = content;
+    }
+
+    public String getSubheading() {
+        return subheading;
+    }
+
+    public void setSubheading(String subheading) {
+        this.subheading = subheading;
     }
 
 

@@ -1,16 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Welcome</title>
-</head>
+{{>header}}
 <body>
+    {{>navigation}}
+    <!-- Page Header -->
+    <header class="masthead" style="background-image: url('../public/img/bgpic.jpg')">
+        <div class="overlay"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-md-10 mx-auto">
+                    <div class="site-heading">
+                        <h1>Harambee Online Magazine</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
     {{#submissions}}
-        <p>{{title}}</p>
-        <p>{{artist}}</p>
-        <img src="{{url}}">
-        <p>{{content}}</p>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-md-10 mx-auto">
+                    <div class="post-preview">
+                        <a href="/post/{{title}}">
+                            <h2 class="post-title">
+                                {{title}}
+                            </h2>
+                            <h3 class="post-subtitle">
+                               {{subheading}}
+                            </h3>
+                            <img class="img-fluid" id="bgpic" src="{{url}}" alt="preview">
+                        </a>
+                        <p class="post-meta">By
+                            <a href="#">{{artist}}</a></p>
+                    </div>
+                    <hr>
+                </div>
+            </div>
+        </div>
     {{/submissions}}
 
+
+
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="../public/vendor/jquery/jquery.min.js"></script>
+    <script src="../public/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Custom scripts for this template -->
+    <script src="../public/js/clean-blog.min.js"></script>
+    {{>footer}}
 </body>
 </html>
