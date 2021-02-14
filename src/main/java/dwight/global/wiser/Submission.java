@@ -4,6 +4,8 @@ import javax.persistence.*;
 
 @Entity
 public class Submission {
+    //@Id makes id unique and stores it as a primary key in the database
+    //@GeneratedValue stores an automatically generated unique value
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
@@ -12,12 +14,15 @@ public class Submission {
 
     private String title;
 
+    //Subheadings can be optional
     @Basic(optional=true)
     private String subheading;
 
+    //URLs are optional and have a default value
     @Basic(optional=true)
-    private String url;
+    private String url = "../public/img/bg-masthead.jpg";
 
+    @Column(columnDefinition="text")
     @Basic(optional=true)
     private String content;
 

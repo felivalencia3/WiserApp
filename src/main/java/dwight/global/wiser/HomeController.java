@@ -4,6 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.ArrayList;
 import java.util.Map;
@@ -30,12 +32,28 @@ public class HomeController {
         model.put("content", s.getContent());
         return "post";
     }
+
     @GetMapping("/contact")
     public String contactPage() {
         return "contact";
     }
-    @GetMapping("/issues")
-    public String issueList() {
-        return "issues";
+
+    @GetMapping("/about")
+    public String aboutPage() {
+        return "about";
+    }
+
+    @GetMapping("/auth")
+    public String redirectLogIn() {
+        return "login";
+    }
+
+    @PostMapping("/auth")
+    public String processLogIn(@RequestParam(name = "username") String username, @RequestParam(name = "password") String password) {
+        if (username.equals("harambee_staff") && password.equals("dwight_global")) {
+            return "redirect: /swagger-ui.html";
+        } else {
+            return "loginerror";
+        }
     }
 }

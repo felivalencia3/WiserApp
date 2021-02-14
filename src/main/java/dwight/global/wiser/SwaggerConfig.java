@@ -23,9 +23,12 @@ public class SwaggerConfig extends WebMvcConfigurationSupport {
     }
     @Override
     protected void addResourceHandlers(ResourceHandlerRegistry registry) {
+        // Maps the Admin Dashborard Files to /swagger-ui.html
         registry.addResourceHandler("swagger-ui.html")
                 .addResourceLocations("classpath:/META-INF/resources/");
         registry.addResourceHandler("/webjars/**")
                 .addResourceLocations("classpath:/META-INF/resources/webjars/");
+        // Maps all Static files in the resources/public folder to the path /public/
+        registry.addResourceHandler("/public/**").addResourceLocations("classpath:/public/");
     }
 }
