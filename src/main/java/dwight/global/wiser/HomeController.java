@@ -18,7 +18,7 @@ public class HomeController {
     @GetMapping("/")
     public String home(Map<String, Object> model) {
         ArrayList<Submission> submissions = (ArrayList) submissionRepository.findAll();
-        model.put("submissions", submissionRepository.findAll());
+        model.put("submissions", submissionRepository.findAllByApprovedIsTrue());
         return "home";
     }
 

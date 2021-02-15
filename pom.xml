@@ -10,7 +10,7 @@
     </parent>
     <groupId>dwight.global</groupId>
     <artifactId>wiser</artifactId>
-    <version>1.2.1</version>
+    <version>1.3.0</version>
     <name>WiserOnline</name>
     <description>WISER Art Expo</description>
 

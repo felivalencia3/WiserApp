@@ -26,6 +26,9 @@ public class Submission {
     @Basic(optional=true)
     private String content;
 
+    @Basic(optional=true)
+    private boolean approved;
+
     public Integer getId() {
         return id;
     }

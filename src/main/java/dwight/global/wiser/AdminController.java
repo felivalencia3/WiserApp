@@ -52,6 +52,8 @@ public class AdminController {
     public Submission getByTitle(@PathVariable String title) {
         return submissionRepository.findByTitle(title);
     }
-
-
+    @GetMapping("/api/approved")
+    public Iterable<Submission> getApproved() {
+        return submissionRepository.findAllByApprovedIsTrue();
+    }
 }
