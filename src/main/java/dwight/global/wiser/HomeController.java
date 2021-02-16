@@ -32,7 +32,7 @@ public class HomeController {
         model.put("content", s.getContent());
         return "post";
     }
-
+    
     @GetMapping("/contact")
     public String contactPage() {
         return "contact";
