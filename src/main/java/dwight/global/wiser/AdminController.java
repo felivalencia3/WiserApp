@@ -52,7 +52,7 @@ public class AdminController {
     public Submission getByTitle(@PathVariable String title) {
         return submissionRepository.findByTitle(title);
     }
-    @GetMapping("/api/approved")
+    @GetMapping("/api/approve")
     public Iterable<Submission> getApproved() {
         return submissionRepository.findAllByApprovedIsTrue();
     }
@@ -60,5 +60,10 @@ public class AdminController {
     @GetMapping("/api/id/{title}")
     public Iterable<Submission> getIdByTitle(@PathVariable String title) {
         return submissionRepository.findAllByTitle(title);
+    }
+    @PostMapping("/api/approve")
+    public String approvePost(@RequestParam Integer id) {
+        submissionRepository.findById(id).orElseThrow(() -> new SubmissionNotFoundException(id)).setApproved(true);
+        return "Approved.";
     }
 }

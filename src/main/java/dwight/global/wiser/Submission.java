@@ -29,6 +29,14 @@ public class Submission {
     @Basic(optional=true)
     private boolean approved;
 
+    public boolean isApproved() {
+        return approved;
+    }
+
+    public void setApproved(boolean approved) {
+        this.approved = approved;
+    }
+
     public Integer getId() {
         return id;
     }
