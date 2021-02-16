@@ -42,18 +42,10 @@ public class HomeController {
     public String aboutPage() {
         return "about";
     }
-
-    @GetMapping("/auth")
-    public String redirectLogIn() {
-        return "login";
+    @PostMapping("/api/contact")
+    public String sendEmail(@RequestParam(name="name") String name, @RequestParam(name="email") String email, @RequestParam(name="phone") String phone, @RequestParam(name="msg") String message) {
+        // This doesn't do anything yet
+        return "Approved";
     }
 
-    @PostMapping("/auth")
-    public String processLogIn(@RequestParam(name = "username") String username, @RequestParam(name = "password") String password) {
-        if (username.equals("harambee_staff") && password.equals("dwight_global")) {
-            return "redirect: /swagger-ui.html";
-        } else {
-            return "loginerror";
-        }
-    }
 }

@@ -1,27 +1,23 @@
 package dwight.global.wiser;
 
 
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
+@Api(value="Editors Dashboard", description = "For Editors and Staff. Operations pertaining to Submission Upload and Approval")
 public class AdminController {
     @Autowired
     SubmissionRepository submissionRepository;
 
     @GetMapping("/api/all")
+    @ApiOperation(value="Returns all Submissions, approved or not")
     public Iterable<Submission> getAll() {
         return submissionRepository.findAll();
     }
 
-    @PostMapping("/api/contact")
-    public String sendEmail(@RequestParam(name="name") String name, @RequestParam(name="email") String email, @RequestParam(name="phone") String phone, @RequestParam(name="msg") String message) {
-        System.out.println("name = " + name);
-        System.out.println("email = " + email);
-        System.out.println("phone = " + phone);
-        System.out.println("message = " + message);
-        return "Approved";
-    }
 
     @PostMapping("/api/add")
     public String addNewSubmission(@RequestParam String artist, @RequestParam String title, @RequestParam String url,
