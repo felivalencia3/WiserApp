@@ -42,10 +42,15 @@ public class HomeController {
     public String aboutPage() {
         return "about";
     }
+    @GetMapping("/upload")
+    public String uploadSubmission() {
+        return "upload";
+    }
     @PostMapping("/api/contact")
     public String sendEmail(@RequestParam(name="name") String name, @RequestParam(name="email") String email, @RequestParam(name="phone") String phone, @RequestParam(name="msg") String message) {
         // This doesn't do anything yet
         return "Approved";
     }
+
 
 }
