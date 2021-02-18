@@ -29,7 +29,6 @@ public class AmazonClient {
 
     // Most important method of the class
     // Calls on all other methods
-
     public String uploadFile(MultipartFile multipartFile) {
         String fileUrl = "";
         try {

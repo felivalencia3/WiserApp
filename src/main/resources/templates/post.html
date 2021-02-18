@@ -2,40 +2,40 @@
 <html lang="en">
 
 {{>header}}
-
+<body>
 {{>navigation}}
 
-<!-- Page Header -->
-<header class="masthead" style="background-image: url('{{url}}')">
-    <div class="overlay"></div>
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-8 col-md-10 mx-auto">
-                <div class="post-heading">
-                    <h1>{{title}}</h1>
-                    {{#url}}
-                    <form action="{{url}}"><input type="submit" class="btn btn-outline-dark" value="See Full Image" /></form>
-                    {{/url}}
-                    <h2 class="subheading">{{subheading}}</h2>
-                    <span class="meta">By {{artist}} </span>
+    <!-- Page Header -->
+    <header class="masthead" style="background-image: url('{{url}}')">
+        <div class="overlay"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-md-10 mx-auto">
+                    <div class="post-heading">
+                        <h1>{{title}}</h1>
+                        <h2 class="subheading">{{subheading}}</h2>
+                        <span class="meta">By {{artist}} </span>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-</header>
+    </header>
 
-<!-- Post Content -->
-<article>
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-8 col-md-10 mx-auto" style="white-space: normal">
-                {{content}}
+    <!-- Post Content -->
+    <article>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-md-10 mx-auto" style="white-space: normal">
+                    {{#url}}
+                    <div class="d-flex justify-content-center"><form action="{{url}}"><input type="submit" class="btn btn-outline-dark" value="See Full Image" /></form></div>
+                    {{/url}}
+                    {{content}}
+                </div>
             </div>
         </div>
-    </div>
-</article>
+    </article>
 
-<hr>
+    <hr>
 
 {{>footer}}
 

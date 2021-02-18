@@ -11,12 +11,18 @@
                 <div class="col-lg-8 col-md-10 mx-auto">
                     <div class="site-heading">
                         <h1>Harambee Online Magazine</h1>
-                        <a href="/upload"><button type="button" class="btn btn-outline-success">Upload a Submission</button></a>
+                        <a href="/upload"><button type="button" class="btn btn-dark">Upload a Submission</button></a>
+                        {{#message}}
+                        <div class="alert alert-success" role="alert">
+                            {{message}}
+                        </div>
+                        {{/message}}
                     </div>
                 </div>
             </div>
         </div>
     </header>
+
 
     {{#submissions}}
         <div class="container">
@@ -30,7 +36,7 @@
                             <h3 class="post-subtitle">
                                {{subheading}}
                             </h3>
-                            <img class="img-fluid" id="bgpic" src="{{url}}" alt="preview">
+                            <img class="img-fluid mh-50" id="bgpic" src="{{url}}" alt="preview">
                         </a>
                         <p class="post-meta">By
                             <a href="#">{{artist}}</a></p>

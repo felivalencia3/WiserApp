@@ -25,4 +25,6 @@ public class StorageController {
     public String deleteFile(@RequestParam(value = "url") String fileUrl) {
         return this.amazonClient.deleteFileFromS3Bucket(fileUrl);
     }
+
+
 }

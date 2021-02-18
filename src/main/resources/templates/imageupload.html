@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+{{>header}}
+{{>navigation}}
+<link href="../public/css/upload.css" rel="stylesheet">
+<body>
+<section class="page-section" id="contact">
+    <div class="container">
+        <div class="text-center">
+            <br>
+            <h2 class="section-heading text-uppercase">Now, Upload an Art Piece, Photo or Image to go with your Submission (Optional)</h2>
+            <h3 class="section-subheading text-muted">Show us your talent!</h3>
+        </div>
+        <form action="/imageupload" method="post" id="contactForm" name="newSubmission" novalidate="novalidate" enctype="multipart/form-data">
+
+            <div class="form-group form-group-textarea mb-md-0" style="background-color: white">
+                <input type="file" name="image" class="form-control-file">
+            </div>
+            <input type="number" name="id" value="{{id}}" hidden="hidden" />
+            <div class="text-center">
+                <div id="success"></div>
+                <button class="btn btn-primary btn-xl text-uppercase" id="sendMessageButton" type="submit">Submit</button>
+            </div>
+        </form>
+    </div>
+</section>
+</body>
+{{>footer}}
+</html>

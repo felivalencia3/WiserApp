@@ -18,6 +18,12 @@ public class AdminController {
         return submissionRepository.findAll();
     }
 
+    @GetMapping("/api/notapproved")
+    @ApiOperation(value="Returns submissions that have not yet been approved")
+    public Iterable<Submission> notApproved() {
+        return submissionRepository.findAllByApprovedIsFalse();
+    }
+
 
     @PostMapping("/api/add")
     @ApiOperation(value="Adds a submission.")
@@ -45,28 +51,28 @@ public class AdminController {
     public Submission updateSubmissionURL(@PathVariable int id, @RequestParam String newUrl) {
         Submission optionalSub = submissionRepository.findById(id).orElseThrow(() -> new SubmissionNotFoundException(id));
         optionalSub.setUrl(newUrl);
+        submissionRepository.save(optionalSub);
         return submissionRepository.findById(id).orElseThrow(() -> new SubmissionNotFoundException(id));
     }
     @GetMapping("/api/submission/{title}")
-    @ApiOperation(value="Gets a submission after searching for its title.")
+    @ApiOperation(value="Gets a submission from its title.")
     public Submission getByTitle(@PathVariable String title) {
         return submissionRepository.findByTitle(title);
     }
+
     @GetMapping("/api/approve")
     @ApiOperation(value="Gets all of the currently approved submissions.")
     public Iterable<Submission> getApproved() {
         return submissionRepository.findAllByApprovedIsTrue();
     }
 
-    @GetMapping("/api/id/{title}")
-    @ApiOperation(value="Gets a submission's ID by searching for its title")
-    public Iterable<Submission> getIdByTitle(@PathVariable String title) {
-        return submissionRepository.findAllByTitle(title);
-    }
     @PostMapping("/api/approve")
     @ApiOperation(value="Approves a post through its ID.")
     public String approvePost(@RequestParam Integer id) {
-        submissionRepository.findById(id).orElseThrow(() -> new SubmissionNotFoundException(id)).setApproved(true);
+        Submission approved = submissionRepository.findById(id).orElseThrow(() -> new SubmissionNotFoundException(id));
+        approved.setApproved(true);
+        submissionRepository.save(approved);
         return "Approved.";
     }
+
 }
