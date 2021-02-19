@@ -18,6 +18,15 @@ public class AdminController {
         return submissionRepository.findAll();
     }
 
+    @PostMapping("/api/approve/{title}")
+    @ApiOperation(value="Approves a Submission from its title")
+    public String approveByTitle(@PathVariable String title) {
+        Submission sub = this.submissionRepository.findByTitle(title);
+        sub.setApproved(true);
+        submissionRepository.save(sub);
+        return "Approved";
+    }
+
     @GetMapping("/api/notapproved")
     @ApiOperation(value="Returns submissions that have not yet been approved")
     public Iterable<Submission> notApproved() {
