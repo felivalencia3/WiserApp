@@ -51,7 +51,7 @@ public class AdminController {
     @DeleteMapping("/api/delete/{id}")
     @ApiOperation(value="Deletes an existing submission.")
     public String deleteSubmission(@PathVariable int id) {
-        submissionRepository.deleteById(id);
+        submissionRepository.deleteSubmissionById(id);
         return "Deleted submission: " + id;
     }
 
