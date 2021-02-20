@@ -48,14 +48,14 @@ public class AdminController {
         return "Saved";
     }
 
-    @PostMapping("/api/delete/{id}")
+    @DeleteMapping("/api/delete/{id}")
     @ApiOperation(value="Deletes an existing submission.")
     public String deleteSubmission(@PathVariable int id) {
         submissionRepository.deleteById(id);
         return "Deleted submission: " + id;
     }
 
-    @PostMapping("/api/update")
+    @PutMapping("/api/update")
     @ApiOperation(value="Updates an existing submission's URL.")
     public Submission updateSubmissionURL(@PathVariable int id, @RequestParam String newUrl) {
         Submission optionalSub = submissionRepository.findById(id).orElseThrow(() -> new SubmissionNotFoundException(id));

@@ -9,11 +9,3 @@ public class WiserOnlineApplication {
         SpringApplication.run(WiserOnlineApplication.class, args);
     }
 }
-/*
-Properties:
-spring.jpa.hibernate.ddl-auto=update
-spring.datasource.url=jdbc:mysql://aa19k7bjjgn704q.csdomcskus2z.us-east-2.rds.amazonaws.com:3306/ebdb
-spring.datasource.username=harambee
-spring.datasource.password=dwightglobal
-spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.MySQL5Dialect
- */
