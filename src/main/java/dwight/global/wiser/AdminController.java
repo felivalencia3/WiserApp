@@ -49,18 +49,7 @@ public class AdminController {
         submissionRepository.save(n);
         return "Saved";
     }
-
-    // Delete method must be annotated as Transactional to work
-    // Because you get an error
-    // If a method without the @Transactional annotion calls a method with the @Transactional annotation in the same classfile.
-    @Transactional
-    @DeleteMapping("/api/delete/{id}")
-    @ApiOperation(value="Deletes an existing submission.")
-    public String deleteSubmission(@PathVariable int id) {
-        submissionRepository.deleteSubmissionById(id);
-        return "Deleted submission: " + id;
-    }
-
+    
     @PutMapping("/api/update")
     @ApiOperation(value="Updates an existing submission's URL.")
     public Submission updateSubmissionURL(@PathVariable int id, @RequestParam String newUrl) {
