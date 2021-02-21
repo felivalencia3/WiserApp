@@ -6,6 +6,8 @@ import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.transaction.Transactional;
+
 @RestController
 @Api(value="Editors Dashboard", description = "For Editors and Staff. Operations pertaining to submission Upload and Approval")
 public class AdminController {
@@ -48,6 +50,10 @@ public class AdminController {
         return "Saved";
     }
 
+    // Delete method must be annotated as Transactional to work
+    // Because you get an error
+    // If a method without the @Transactional annotion calls a method with the @Transactional annotation in the same classfile.
+    @Transactional
     @DeleteMapping("/api/delete/{id}")
     @ApiOperation(value="Deletes an existing submission.")
     public String deleteSubmission(@PathVariable int id) {
