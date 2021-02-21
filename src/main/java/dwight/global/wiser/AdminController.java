@@ -49,8 +49,8 @@ public class AdminController {
         submissionRepository.save(n);
         return "Saved";
     }
-    
-    @PutMapping("/api/update")
+
+    @PutMapping("/api/update/{id}")
     @ApiOperation(value="Updates an existing submission's URL.")
     public Submission updateSubmissionURL(@PathVariable int id, @RequestParam String newUrl) {
         Submission optionalSub = submissionRepository.findById(id).orElseThrow(() -> new SubmissionNotFoundException(id));
