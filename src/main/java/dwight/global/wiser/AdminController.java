@@ -6,7 +6,6 @@ import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import javax.transaction.Transactional;
 
 @RestController
 @Api(value="Editors Dashboard", description = "For Editors and Staff. Operations pertaining to submission Upload and Approval")
@@ -34,7 +33,6 @@ public class AdminController {
     public Iterable<Submission> notApproved() {
         return submissionRepository.findAllByApprovedIsFalse();
     }
-
 
     @PostMapping("/api/add")
     @ApiOperation(value="Adds a submission.")
