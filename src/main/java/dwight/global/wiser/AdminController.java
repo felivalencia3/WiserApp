@@ -24,7 +24,7 @@ public class AdminController {
     public String approveByTitle(@PathVariable String title) {
         Submission sub = this.submissionRepository.findByTitle(title);
         boolean opposite = true;
-        if(sub.getApproved()==true) {
+        if(sub.isApproved()==true) {
             opposite = false;
         }
         sub.setApproved(opposite);
