@@ -23,13 +23,17 @@ public class AdminController {
     @ApiOperation(value="Approves a Submission from its title")
     public String approveByTitle(@PathVariable String title) {
         Submission sub = this.submissionRepository.findByTitle(title);
-        boolean opposite = true;
-        if(sub.isApproved()==true) {
-            opposite = false;
-        }
-        sub.setApproved(opposite);
+        sub.setApproved(true);
         submissionRepository.save(sub);
         return "Approved";
+    }
+    @PostMapping("/api/unapprove/{title}")
+    @ApiOperation(value="Unapproves a Submission from its title")
+    public String unapproveByTitle(@PathVariable String title) {
+        Submission sub = this.submissionRepository.findByTitle(title);
+        sub.setApproved(false);
+        submissionRepository.save(sub);
+        return "Unapproved";
     }
 
     @GetMapping("/api/notapproved")
