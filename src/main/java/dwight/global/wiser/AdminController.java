@@ -23,7 +23,11 @@ public class AdminController {
     @ApiOperation(value="Approves a Submission from its title")
     public String approveByTitle(@PathVariable String title) {
         Submission sub = this.submissionRepository.findByTitle(title);
-        sub.setApproved(true);
+        boolean opposite = true;
+        if(sub.getApproved()==true) {
+            opposite = false;
+        }
+        sub.setApproved(opposite);
         submissionRepository.save(sub);
         return "Approved";
     }
